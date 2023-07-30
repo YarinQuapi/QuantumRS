@@ -1,0 +1,22 @@
+{
+  "entries": [
+    "quantumrs:chests/bastion_hoglin_stable",
+    "quantumrs:chests/igloo_chest",
+    "quantumrs:chests/bastion_bridge",
+    "quantumrs:gameplay/fishing/treasure",
+    "quantumrs:chests/village/village_toolsmith",
+    "quantumrs:chests/bastion_treasure",
+    "quantumrs:chests/village/village_mason",
+    "quantumrs:chests/bastion_other",
+    "quantumrs:chests/woodland_mansion",
+    "quantumrs:chests/buried_treasure",
+    "quantumrs:chests/shipwreck_supply",
+    "quantumrs:chests/stronghold_library",
+    "quantumrs:chests/end_city_treasure",
+    "quantumrs:chests/abandoned_mineshaft",
+    "quantumrs:chests/village/village_temple",
+    "quantumrs:chests/desert_pyramid",
+    "quantumrs:chests/nether_bridge"
+  ],
+  "replace": false
+}
