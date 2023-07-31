@@ -4,10 +4,6 @@
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:chests/end_city_treasure"
-    },
-    {
-      "condition": "quantumrs:configurable_random_chance",
-      "default_probability": 0.05
     }
   ],
   "lootTable": "quantumrs:inject/chests/end_city_treasure"

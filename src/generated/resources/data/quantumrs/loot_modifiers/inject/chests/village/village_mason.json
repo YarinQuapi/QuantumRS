@@ -4,10 +4,6 @@
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:chests/village/village_mason"
-    },
-    {
-      "condition": "quantumrs:configurable_random_chance",
-      "default_probability": 0.03
     }
   ],
   "lootTable": "quantumrs:inject/chests/village/village_mason"

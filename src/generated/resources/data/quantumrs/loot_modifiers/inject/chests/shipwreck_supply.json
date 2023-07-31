@@ -4,10 +4,6 @@
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:chests/shipwreck_supply"
-    },
-    {
-      "condition": "quantumrs:configurable_random_chance",
-      "default_probability": 0.04
     }
   ],
   "lootTable": "quantumrs:inject/chests/shipwreck_supply"

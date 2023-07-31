@@ -14,7 +14,8 @@ public record ConfigurableRandomChance(float defaultProbability) implements Loot
     }
 
     public boolean test(LootContext context) {
-        return context.getRandom().nextFloat() < defaultProbability;
+        System.out.println("test");
+        return true;
     }
 
     public static LootItemCondition.Builder configurableRandomChance(float probability) {

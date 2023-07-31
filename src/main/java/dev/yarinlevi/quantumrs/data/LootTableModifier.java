@@ -70,14 +70,14 @@ public class LootTableModifier extends GlobalLootModifierProvider {
         addLoot();
 
         for (Builder lootBuilder : lootBuilders) {
-            add(lootBuilder.lootTable, lootBuilder.build());
+            add("inject/" + lootBuilder.lootTable, lootBuilder.build());
         }
     }
 
     protected Builder builder(String lootTable, float baseChance) {
         Builder builder = new Builder(lootTable);
         builder.lootModifierCondition(LootTableIdCondition.builder(new ResourceLocation(lootTable)));
-        builder.lootModifierCondition(ConfigurableRandomChance.configurableRandomChance(baseChance));
+        //builder.lootModifierCondition(ConfigurableRandomChance.configurableRandomChance(baseChance));
         lootBuilders.add(builder);
         return builder;
     }
