@@ -114,7 +114,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven  {
-        url = uri("https://maven.pkg.github.com/refinedmods/refinedstorage")
+        url = uri("https://maven.creeperhost.net")
 
         credentials {
             username = "anything"
@@ -126,8 +126,8 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    compileOnly "com.refinedmods:refinedstorage:1.11.6"
-    runtimeOnly fg.deobf("com.refinedmods:refinedstorage:1.11.6") {
+    compileOnly "com.refinedmods:refinedstorage:1.10.2"
+    runtimeOnly fg.deobf("com.refinedmods:refinedstorage:1.10.2") {
         transitive false
     }
 }

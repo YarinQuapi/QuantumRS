@@ -1,10 +1,10 @@
 {
-  "type": "quantumrs:roll_loot_table",
   "conditions": [
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:chests/buried_treasure"
     }
   ],
-  "lootTable": "quantumrs:inject/chests/buried_treasure"
+  "lootTable": "quantumrs:inject/chests/buried_treasure",
+  "type": "quantumrs:roll_loot_table"
 }

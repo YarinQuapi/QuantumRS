@@ -10,15 +10,20 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 public record ConfigurableRandomChance(float defaultProbability) implements LootItemCondition {
     public LootItemConditionType getType() {
-        return ModLootConditions.CONFIGURABLE_CHANCE.get();
+        return ModLootConditions.CONFIGURABLE_CHANCE;
     }
 
     public boolean test(LootContext context) {
-        System.out.println("test");
-        return true;
+        float f = context.getRandom().nextFloat();
+
+        System.out.println(f);
+        System.out.println(defaultProbability);
+        System.out.println(f <= defaultProbability);
+        return f <= defaultProbability;
     }
 
     public static LootItemCondition.Builder configurableRandomChance(float probability) {
+
         return () -> new ConfigurableRandomChance(probability);
     }
 

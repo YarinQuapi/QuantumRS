@@ -2,6 +2,7 @@
   "type": "minecraft:chest",
   "pools": [
     {
+      "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
@@ -9,7 +10,12 @@
           "name": "quantumrs:disk_quantum"
         }
       ],
-      "rolls": 1.0
+      "conditions": [
+        {
+          "condition": "quantumrs:configurable_random_chance",
+          "default_probability": 0.5
+        }
+      ]
     }
   ]
 }

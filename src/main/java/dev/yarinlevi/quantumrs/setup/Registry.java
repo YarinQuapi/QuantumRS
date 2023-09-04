@@ -1,10 +1,8 @@
 package dev.yarinlevi.quantumrs.setup;
 
-import com.mojang.serialization.Codec;
 import dev.yarinlevi.quantumrs.QuantumRS;
 import dev.yarinlevi.quantumrs.items.ExtendedDiskItem;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;

@@ -7,6 +7,7 @@ import dev.yarinlevi.quantumrs.setup.Registry;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -20,10 +21,11 @@ public class QuantumRS {
 
         MinecraftForge.EVENT_BUS.register(this);
 
-        ModLootConditions.LOOT_CONDITIONS.register(modEventBus);
         ModLootModifiers.LOOT_MODIFIERS.register(modEventBus);
 
         Registry.ITEMS.register(modEventBus);
+
+        modEventBus.addGenericListener(GlobalLootModifierSerializer.class, ModLootConditions::register);
     }
 
     public static CreativeModeTab QUANTUM_CREATIVE_TAB = new CreativeModeTab("quantum_group") {

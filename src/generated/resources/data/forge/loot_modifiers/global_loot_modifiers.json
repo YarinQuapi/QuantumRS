@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "entries": [
     "quantumrs:inject/chests/village/village_temple",
     "quantumrs:inject/chests/woodland_mansion",
@@ -17,6 +18,5 @@
     "quantumrs:inject/chests/stronghold_library",
     "quantumrs:inject/gameplay/fishing/treasure",
     "quantumrs:inject/chests/bastion_hoglin_stable"
-  ],
-  "replace": false
+  ]
 }

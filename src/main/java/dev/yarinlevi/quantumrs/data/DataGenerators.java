@@ -3,9 +3,9 @@ package dev.yarinlevi.quantumrs.data;
 import dev.yarinlevi.quantumrs.QuantumRS;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 public class DataGenerators {
     @Mod.EventBusSubscriber(modid = QuantumRS.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -17,10 +17,14 @@ public class DataGenerators {
 
             LootTableModifier lootTableModifier = new LootTableModifier(generator, QuantumRS.MODID);
 
-            generator.addProvider(event.includeServer(), new ItemsProvider(generator, existingFileHelper));
-            generator.addProvider(event.includeServer(), new LangGenerator(generator));
-            generator.addProvider(event.includeServer(), lootTableModifier);
-            generator.addProvider(event.includeServer(), new LootTables(generator, existingFileHelper, lootTableModifier));
+            if (event.includeServer()) {
+                generator.addProvider(new LangGenerator(generator));
+                generator.addProvider(lootTableModifier);
+                generator.addProvider(new LootTables(generator, existingFileHelper, lootTableModifier));
+            }
+            if (event.includeClient()) {
+                generator.addProvider(new ItemsProvider(generator, existingFileHelper));
+            }
         }
     }
 }

@@ -5,11 +5,11 @@ import com.mojang.datafixers.util.Pair;
 import dev.yarinlevi.quantumrs.QuantumRS;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
@@ -40,9 +40,11 @@ public class LootTables extends LootTableProvider {
     @Override
     protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
         tables.clear();
+
         for (LootTableModifier.Builder builder : lootModifiers.lootBuilders) {
             addLootTable(builder.getName(), builder.createLootTable(), builder.getParameterSet());
         }
+
         return tables;
     }
 

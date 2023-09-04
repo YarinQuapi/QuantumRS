@@ -2,6 +2,7 @@ package dev.yarinlevi.quantumrs.data;
 
 import dev.yarinlevi.quantumrs.QuantumRS;
 import dev.yarinlevi.quantumrs.loot.ConfigurableRandomChance;
+import dev.yarinlevi.quantumrs.loot.ModLootModifiers;
 import dev.yarinlevi.quantumrs.loot.RollLootTableModifier;
 import dev.yarinlevi.quantumrs.setup.ItemStorageType;
 import dev.yarinlevi.quantumrs.setup.Registry;
@@ -28,15 +29,15 @@ public class LootTableModifier extends GlobalLootModifierProvider {
     }
 
     private void addLoot() {
-        builder("chests/desert_pyramid", 0.03f)
+        builder("chests/desert_pyramid", 0.07f)
                 .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
-        builder("chests/buried_treasure", 0.05f)
+        builder("chests/buried_treasure", 0.1f)
                 .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
-        builder("chests/igloo_chest", 0.05f)
+        builder("chests/igloo_chest", 0.15f)
                 .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
-        builder("chests/end_city_treasure", 0.05f)
+        builder("chests/end_city_treasure", 0.1f)
                 .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
-        builder("chests/stronghold_library", 1f)
+        builder("chests/stronghold_library", 0.5f)
                 .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
         builder("chests/village/village_mason", 0.03f)
                 .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
@@ -44,7 +45,7 @@ public class LootTableModifier extends GlobalLootModifierProvider {
                 .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
         builder("chests/village/village_toolsmith", 0.03f)
                 .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
-        builder("chests/woodland_mansion", 0.075f)
+        builder("chests/woodland_mansion", 0.1f)
                 .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
         builder("chests/shipwreck_supply", 0.04f)
                 .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
@@ -65,21 +66,25 @@ public class LootTableModifier extends GlobalLootModifierProvider {
     }
 
 
-    @Override
     protected void start() {
         addLoot();
 
         for (Builder lootBuilder : lootBuilders) {
-            add("inject/" + lootBuilder.lootTable, lootBuilder.build());
+            add("inject/" + lootBuilder.lootTable, ModLootModifiers.ROLL_LOOT_TABLE.get(), lootBuilder.build());
         }
     }
 
     protected Builder builder(String lootTable, float baseChance) {
         Builder builder = new Builder(lootTable);
+        builder.lootPoolCondition(ConfigurableRandomChance.configurableRandomChance(baseChance));
         builder.lootModifierCondition(LootTableIdCondition.builder(new ResourceLocation(lootTable)));
-        //builder.lootModifierCondition(ConfigurableRandomChance.configurableRandomChance(baseChance));
         lootBuilders.add(builder);
         return builder;
+    }
+
+    @Override
+    public String getName() {
+        return null;
     }
 
     @SuppressWarnings({"UnusedReturnValue", "SameParameterValue"})

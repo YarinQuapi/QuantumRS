@@ -1,25 +1,17 @@
 package dev.yarinlevi.quantumrs.loot;
 
-import com.google.common.base.Suppliers;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import com.google.gson.JsonObject;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 
-import java.util.function.Supplier;
+import java.util.List;
 
 public class RollLootTableModifier extends LootModifier {
-    public static final Supplier<Codec<RollLootTableModifier>> CODEC = Suppliers.memoize(
-            () -> RecordCodecBuilder.create(instance -> codecStart(instance)
-                    .and(ResourceLocation.CODEC.fieldOf("lootTable").forGetter(m -> m.lootTable))
-                    .apply(instance, RollLootTableModifier::new)
-            )
-    );
 
     private final ResourceLocation lootTable;
 
@@ -29,14 +21,25 @@ public class RollLootTableModifier extends LootModifier {
     }
 
     @Override
-    protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        // noinspection deprecation
+    protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+        // noinspection deprecation - prevent triggering global loot modifiers again
         context.getLootTable(lootTable).getRandomItems(context, generatedLoot::add);
         return generatedLoot;
     }
 
-    @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
-        return CODEC.get();
+    public static class Serializer extends GlobalLootModifierSerializer<RollLootTableModifier> {
+
+        @Override
+        public RollLootTableModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] conditions) {
+            ResourceLocation lootTable = new ResourceLocation(GsonHelper.getAsString(object, "lootTable"));
+            return new RollLootTableModifier(conditions, lootTable);
+        }
+
+        @Override
+        public JsonObject write(RollLootTableModifier instance) {
+            JsonObject object = makeConditions(instance.conditions);
+            object.addProperty("lootTable", instance.lootTable.toString());
+            return object;
+        }
     }
 }
