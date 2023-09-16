@@ -63,6 +63,21 @@ public class LootTableModifier extends GlobalLootModifierProvider {
                 .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
         builder("chests/bastion_other", 0.04f)
                 .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
+        builder("betterstrongholds:chests/library_md", 0.5f)
+                .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
+        builder("betterstrongholds:chests/grand_library", 0.5f)
+                .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
+        builder("chests/village/village_weaponsmith", 0.04f)
+                .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
+        builder("chests/bastion_other", 0.04f)
+                .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
+        builder("chests/bastion_other", 0.04f)
+                .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
+        builder("chests/bastion_other", 0.04f)
+                .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
+        builder("chests/bastion_other", 0.04f)
+                .item(Registry.ITEM_DISK.get(ItemStorageType.QUANTUM).get());
+
     }
 
 
